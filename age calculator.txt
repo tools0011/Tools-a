@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Age Calculator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f7fa;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .calculator {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .date-section {
+            flex: 1;
+            min-width: 250px;
+        }
+        .date-section h2 {
+            font-size: 1.2rem;
+            color: #3498db;
+            margin-bottom: 15px;
+        }
+        .date-input {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        select, input {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        select {
+            flex: 1;
+        }
+        input[type="number"] {
+            width: 60px;
+        }
+        button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            display: block;
+            margin: 20px auto;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #2980b9;
+        }
+        .results {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .result-item:last-child {
+            border-bottom: none;
+        }
+        .note {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            margin-top: 30px;
+            line-height: 1.5;
+        }
+        @media (max-width: 600px) {
+            .date-input {
+                flex-direction: column;
+            }
+            input[type="number"] {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Age Calculator</h1>
+        <p>The Age Calculator can determine the age or interval between two dates. The calculated age will be displayed in years, months, weeks, days, hours, minutes, and seconds.</p>
+        
+        <div class="calculator">
+            <div class="date-section">
+                <h2>Date of Birth</h2>
+                <div class="date-input">
+                    <select id="birth-month">
+                        <option value="0">Jan</option>
+                        <option value="1">Feb</option>
+                        <option value="2">Mar</option>
+                        <option value="3">Apr</option>
+                        <option value="4">May</option>
+                        <option value="5">Jun</option>
+                        <option value="6">Jul</option>
+                        <option value="7">Aug</option>
+                        <option value="8">Sep</option>
+                        <option value="9">Oct</option>
+                        <option value="10">Nov</option>
+                        <option value="11">Dec</option>
+                    </select>
+                    <input type="number" id="birth-day" min="1" max="31" placeholder="Day" value="10">
+                    <input type="number" id="birth-year" min="1900" max="2100" placeholder="Year" value="2025">
+                </div>
+            </div>
+            
+            <div class="date-section">
+                <h2>Age at the Date of</h2>
+                <div class="date-input">
+                    <select id="current-month">
+                        <option value="0">Jan</option>
+                        <option value="1">Feb</option>
+                        <option value="2">Mar</option>
+                        <option value="3">Apr</option>
+                        <option value="4">May</option>
+                        <option value="5">Jun</option>
+                        <option value="6">Jul</option>
+                        <option value="7">Aug</option>
+                        <option value="8">Sep</option>
+                        <option value="9">Oct</option>
+                        <option value="10">Nov</option>
+                        <option value="11">Dec</option>
+                    </select>
+                    <input type="number" id="current-day" min="1" max="31" placeholder="Day" value="10">
+                    <input type="number" id="current-year" min="1900" max="2100" placeholder="Year" value="2025">
+                </div>
+            </div>
+        </div>
+        
+        <button onclick="calculateAge()">Calculate</button>
+        
+        <div class="results" id="results">
+            <div class="result-item">
+                <span>Years:</span>
+                <span id="years">0</span>
+            </div>
+            <div class="result-item">
+                <span>Months:</span>
+                <span id="months">0</span>
+            </div>
+            <div class="result-item">
+                <span>Weeks:</span>
+                <span id="weeks">0</span>
+            </div>
+            <div class="result-item">
+                <span>Days:</span>
+                <span id="days">0</span>
+            </div>
+            <div class="result-item">
+                <span>Hours:</span>
+                <span id="hours">0</span>
+            </div>
+            <div class="result-item">
+                <span>Minutes:</span>
+                <span id="minutes">0</span>
+            </div>
+            <div class="result-item">
+                <span>Seconds:</span>
+                <span id="seconds">0</span>
+            </div>
+        </div>
+        
+        <div class="note">
+            <p><strong>Note:</strong> The age of a person can be counted differently in different cultures. This calculator is based on the most common age system where age increases on a person's birthday. For example, the age of a person who has lived for 3 years and 11 months is 3, and their age will increase to 4 on their next birthday one month later.</p>
+            <p>In some situations, the months and day result may be confusing, especially when the starting date is the end of a month. We count Feb. 20 to Mar. 20 to be one month. For dates like Feb. 28 to Mar. 31, we consider Feb. 28 to Mar. 28 to be one month.</p>
+        </div>
+    </div>
+
+    <script>
+        function calculateAge() {
+            // Get input values
+            const birthMonth = parseInt(document.getElementById('birth-month').value);
+            const birthDay = parseInt(document.getElementById('birth-day').value);
+            const birthYear = parseInt(document.getElementById('birth-year').value);
+            
+            const currentMonth = parseInt(document.getElementById('current-month').value);
+            const currentDay = parseInt(document.getElementById('current-day').value);
+            const currentYear = parseInt(document.getElementById('current-year').value);
+            
+            // Create date objects
+            const birthDate = new Date(birthYear, birthMonth, birthDay);
+            const currentDate = new Date(currentYear, currentMonth, currentDay);
+            
+            // Validate dates
+            if (isNaN(birthDate.getTime())) {
+                alert("Please enter a valid birth date!");
+                return;
+            }
+            
+            if (isNaN(currentDate.getTime())) {
+                alert("Please enter a valid current date!");
+                return;
+            }
+            
+            if (currentDate < birthDate) {
+                alert("The current date must be after the birth date!");
+                return;
+            }
+            
+            // Calculate total difference in milliseconds
+            const diffMs = currentDate - birthDate;
+            
+            // Calculate total time units
+            const diffSeconds = Math.floor(diffMs / 1000);
+            const diffMinutes = Math.floor(diffSeconds / 60);
+            const diffHours = Math.floor(diffMinutes / 60);
+            const diffDays = Math.floor(diffHours / 24);
+            const diffWeeks = Math.floor(diffDays / 7);
+            
+            // Calculate years and months difference
+            let years = currentYear - birthYear;
+            let months = currentMonth - birthMonth;
+            let days = currentDay - birthDay;
+            
+            if (days < 0) {
+                months--;
+                // Get days in previous month
+                const daysInLastMonth = new Date(currentYear, currentMonth, 0).getDate();
+                days += daysInLastMonth;
+            }
+            
+            if (months < 0) {
+                years--;
+                months += 12;
+            }
+            
+            // Update the UI
+            document.getElementById('years').textContent = years;
+            document.getElementById('months').textContent = months;
+            document.getElementById('weeks').textContent = diffWeeks;
+            document.getElementById('days').textContent = diffDays;
+            document.getElementById('hours').textContent = diffHours;
+            document.getElementById('minutes').textContent = diffMinutes;
+            document.getElementById('seconds').textContent = diffSeconds;
+        }
+        
+        // Initialize with current date
+        window.onload = function() {
+            const today = new Date();
+            document.getElementById('current-month').value = today.getMonth();
+            document.getElementById('current-day').value = today.getDate();
+            document.getElementById('current-year').value = today.getFullYear();
+        };
+    </script>
+</body>
+</html>

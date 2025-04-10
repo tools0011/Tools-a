@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Image Enhancer - Free Online Photo Quality Tool</title>
+    <meta name="description" content="Enhance image quality instantly with AI-powered editing. Improve brightness, contrast, sharpness with real-time preview. Perfect for social media and professional use.">
+    
+    <!-- Google Analytics (Replace GA-XXXXXX with your ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA-XXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA-XXXXXX');
+    </script>
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="theme-toggle">
+        <button id="themeBtn">🌓 Toggle Theme</button>
+    </div>
+    
+    <div class="container">
+        <!-- Top Ad -->
+        <div class="ad-container">
+            [Your Ad Code Here]
+        </div>
+
+        <h1>AI Image Enhancer</h1>
+        
+        <div class="upload-section">
+            <input type="file" id="imageInput" accept="image/*" hidden>
+            <button id="uploadBtn">📤 Upload Image</button>
+            <button id="autoEnhanceBtn">🤖 Auto Enhance</button>
+            <button id="downloadBtn">⏬ Download</button>        </div>
+
+        <div class="comparison-container">
+            <div class="image-container">
+                <img src="" alt="Original" id="originalImage">
+                <img src="" alt="Enhanced" id="enhancedImage">
+                <div class="slider"></div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="control-group">
+                <button id="rotateLeftBtn">↺ Rotate Left</button>
+                <button id="rotateRightBtn">↻ Rotate Right</button>
+            </div>
+            
+            <div class="control-group">
+                <label>🔆 Brightness</label>
+                <input type="range" id="brightness" min="-100" max="100" value="0">
+            </div>
+            <div class="control-group">
+                <label>🌈 Contrast</label>
+                <input type="range" id="contrast" min="-100" max="100" value="0">
+            </div>
+            <div class="control-group">
+                <label>🎨 Saturation</label>
+                <input type="range" id="saturation" min="-100" max="100" value="0">
+            </div>
+            <div class="control-group">
+                <label>🔍 Sharpness</label>
+                <input type="range" id="sharpness" min="0" max="100" value="0">
+            </div>
+            
+            <div class="control-group">
+                <label>📁 Format</label>
+                <select id="formatSelect">
+                    <option value="png">PNG</option>
+                    <option value="jpeg">JPEG</option>
+                </select>
+            </div>
+            
+            <button id="resetBtn">🔄 Reset All</button>
+        </div>
+
+        <!-- Middle Ad -->
+        <div class="ad-container">
+            [Your Ad Code Here]
+        </div>
+
+        <!-- SEO Article -->
+        <article class="seo-content">
+            <h2>Free Online Image Quality Enhancement Guide</h2>
+            
+            <section>
+                <h3>Transform Your Photos Instantly</h3>
+                <p>Our AI-powered tool helps you enhance images in seconds. Perfect for:</p>
+                <ul>
+                    <li>Social media content creation</li>
+                    <li>E-commerce product photos</li>
+                    <li>Professional photography editing</li>
+                    <li>Restoring old pictures</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>How It Works</h3>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h4>Upload</h4>
+                        <p>Select any JPG/PNG image from your device</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h4>Enhance</h4>
+                        <p>Use AI enhancement or manual adjustments</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h4>Download</h4>
+                        <p>Get HD-quality results instantly</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- More article sections... -->
+        </article>
+
+        <!-- Bottom Ad -->
+        <div class="ad-container sticky-ad">
+            [Your Ad Code Here]
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.5.0/fabric.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
